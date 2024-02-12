@@ -53,7 +53,6 @@ export default function TodoList() {
       <button onClick={addNewTask}>Add Todo</button>
       <br />
       <br />
-      <br />
       <hr />
       <h3>Your Todos:</h3>
       <ul>
