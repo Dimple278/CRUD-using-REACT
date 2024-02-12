@@ -10,10 +10,14 @@ export default function TodoList() {
   };
 
   let addNewTask = () => {
-    setTodos([...todos, { task: newTodo, id: uuidv4() }]);
+    setTodos((prevTodos) => [...prevTodos, { task: newTodo, id: uuidv4() }]);
+
     setNewTodo("");
   };
 
+  let deleteTask = (id) => {
+    setTodos((prevTodos) => todos.filter((todo) => todo.id != id));
+  };
   return (
     <div>
       <input
@@ -30,7 +34,17 @@ export default function TodoList() {
       <h3>Your Todos:</h3>
       <ul>
         {todos.map((todo, index) => (
-          <li key={todo.id}>{todo.task}</li>
+          <li key={todo.id}>
+            <span>{todo.task}</span>
+            &nbsp;&nbsp;&nbsp;
+            <button
+              onClick={() => {
+                deleteTask(todo.id);
+              }}
+            >
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
     </div>
